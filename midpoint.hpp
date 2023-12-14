@@ -34,10 +34,9 @@ namespace std {
       // then a has same sign to b, say both positive.
       // This algorithm differs from [llvm version](https://github.com/llvm/llvm-project/blob/main/libcxx/include/__numeric/midpoint.h#L78)
       // only when either a or b is tiny, say b.
-      // On round-to-nearest, b is almost ignored.
+      // On round-to-nearest, round-down or round-towards-zero,
+      // b is almost ignored.
       // On round-up, b*.5 would at least remain positive.
-      // On round-down/round-towards-zero,
-      // b*.5 would also get ignored.
       _Float __t = __a + __b;
       return isfinite(__t)?__t*.5:__a*.5+__b*.5;
     }
